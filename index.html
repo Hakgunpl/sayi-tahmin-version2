@@ -1,78 +1,34 @@
-const eklenecekSayilar = [2, 4, 6, 8];
-const eklenecekSayi = eklenecekSayilar[rastgeleSayi(0, 3)];
-let ad = "";
-const oyunAlaniEleman = document.querySelector("#oyun-alani");
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sayı Tahmin v2</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
 
-ekran1Goster();
+        body {
+            margin: 0;
+            background-color: lightblue;
+            width: 100vw;
+            height: 100vh;
+            text-align: center;
 
-function ekran1Goster() {
-  const adInputElemani = document.createElement("input"); //input oluştur
-  adInputElemani.placeholder = "Adın nedir?"; //placeholder ekledik
-  oyunAlaniEleman.append(adInputElemani);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
 
-  adInputElemani.addEventListener("keypress", (olay) => {
-    if( olay.key === "Enter" ) {
-        olay.preventDefault() // yanlışlıkla form submit engellemek için
-        ad = olay.currentTarget.value
+        div, button, input { font-size: 10vmin; }
 
-        ekran2Goster()
-    }
-  })
-}
+        input {width: 60vmin;}
+    </style>
+</head>
+<body>
+    <div id="oyun-alani"></div>
 
-function ekran2Goster() {
-    oyunAlaniEleman.innerHTML = "" // Ana div içindeki tüm HTML kodunu temizle..
-
-    const pEleman = document.createElement("p")
-    pEleman.textContent = "Aklından bir sayı tut"
-    oyunAlaniEleman.append(pEleman)
-
-    const butonEleman = document.createElement("button")
-    butonEleman.textContent = "Devam ➡"
-    oyunAlaniEleman.append(butonEleman)
-
-    butonEleman.addEventListener("click", (olay)=>{
-        ekran3Goster()
-    } )
-}
-
-
-function ekran3Goster() {
-    oyunAlaniEleman.innerHTML = "" 
-
-    const pEleman = document.createElement("p")
-    pEleman.textContent = "Sayıyı 2 ile çarp"
-    oyunAlaniEleman.append(pEleman)
-
-    const butonEleman = document.createElement("button")
-    butonEleman.textContent = "Devam ➡"
-    oyunAlaniEleman.append(butonEleman)
-
-    butonEleman.addEventListener("click", (olay)=>{
-        ekran4Goster()
-    } )
-}
-
-function ekran4Goster() {
-    oyunAlaniEleman.innerHTML = "" 
-
-    const pEleman = document.createElement("p")
-    pEleman.textContent = `Çıkan sonuca ${eklenecekSayi} ekle.`
-    oyunAlaniEleman.append(pEleman)
-
-    const butonEleman = document.createElement("button")
-    butonEleman.textContent = "Devam ➡"
-    oyunAlaniEleman.append(butonEleman)
-
-    butonEleman.addEventListener("click", (olay)=>{
-        ekran5Goster()
-    } )
-}
-
-
-
-function rastgeleSayi(min, max) {
-  min = Math.ceil(min); //tam sayıya çevirmek için
-  max = Math.floor(max); //tam sayıya çevirmek için
-  return Math.floor(Math.random() * (max - min + 1) + min);
-}
+    <script src="script.js"></script>
+</body>
+</html>
